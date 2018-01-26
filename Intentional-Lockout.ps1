@@ -8,8 +8,6 @@
 #  Only use it on friends, suspicious co-workers, and your boss's boss.  Anything else isn't funny enough.
 
 
-# Test 1 2 3 
-
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory=$true)]
