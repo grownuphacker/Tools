@@ -1,4 +1,12 @@
 <#
+.NOTES
+
+Author:      Adam "Abe" Abernethy
+Twitter:     @ReallyBigAbe
+Go here:     https://blueteam.ninja
+
+Don't be a mean person. 
+
 .SYNOPSIS
 
 Intentionally lock out a user. 

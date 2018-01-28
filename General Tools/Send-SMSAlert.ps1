@@ -1,4 +1,12 @@
 <#
+
+.NOTES
+Author:      Adam "Abe" Abernethy
+Twitter:     @ReallyBigAbe
+Go here:     https://blueteam.ninja
+  
+Don't be a mean person. 
+
 .SYNOPSIS
 
 Send an SMS over Plivo
@@ -55,9 +63,7 @@ C:\PS> $smsparms = @{
 }
 C:\PS>Send-SMSAlert $smsparms
 
-.NOTES
-  
-Don't be a mean person.  
+ 
 
 #>
 
