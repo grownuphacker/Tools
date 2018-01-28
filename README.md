@@ -1,5 +1,5 @@
 # Tools
-All the things I've slapped together over time.  Hope you find them useful.
+A few things I've slapped together over time.  I hope you find them useful.
 
 **Script** | What it does... | Requisites
 ---|---|---:
