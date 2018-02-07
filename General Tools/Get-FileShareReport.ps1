@@ -95,6 +95,7 @@ $fsharedrivelist = Get-WmiObject -Class Win32_share -ComputerName $fileserver -f
                 {$Type -match '(7z|zip|rar|cab|gzip|gz|tgz)'} {$TypeCategory = "Archives";break}
                 {$Type -match '(shp|shx|dbf|tab|kml|gml|apr|kmz)'}      {$TypeCategory = "GIS";break}
                 {$Type -match '(flac|aif?|m4a|wma|mp3|wav|mid|m3u)'}    {$TypeCategory = "Audio";break}
+                {$Type -match '(vmdk,vmx,vmxf,nvram)'}    {$TypeCategory = "Virtualization";break}
                 {$Type -match '(mkv|avi|divx|mov|rm|wmv|mp4|mpg|mpeg|qt)'}    {$TypeCategory = "Video";break}
             default {$TypeCategory = "Other"}
 
