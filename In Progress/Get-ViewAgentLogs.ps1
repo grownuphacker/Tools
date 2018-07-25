@@ -24,7 +24,7 @@ $sessiondata = ([xml]($header + $log + $footer)).LOGS.TERMINALRESPONSE.SESSION
 } catch{
     return;
 }
-$sessiondata = $sessiondata | Where-Object {$_.SESSIONGUID -ne $null} | SELECT SESSIONGUID,STARTTIME,STARTTICK,FIRSTCONNECTTICK,LASTCONNECTTICK,LASTDISCONNECTTICK,LOGOFFTICK
+$sessiondata = $sessiondata | Where-Object {$_.SESSIONGUID -ne $null} | Select-Object SESSIONGUID,STARTTIME,STARTTICK,FIRSTCONNECTTICK,LASTCONNECTTICK,LASTDISCONNECTTICK,LOGOFFTICK
 
 foreach($session in $sessiondata) { 
     $timestamp = (Get-Date "1970-01-01 00:00:00.000Z") + ([TimeSpan]::FromSeconds($($session.STARTTIME)))
