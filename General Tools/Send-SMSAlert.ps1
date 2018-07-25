@@ -68,16 +68,16 @@ C:\PS>Send-SMSAlert $smsparms
 #>
 
 param (
-    [Parameter(Mandatory=$true)] 
+    [Parameter(Mandatory=$true)]
         [string]$recipients,
     [Parameter(Mandatory=$true)]
         [string]$source,
-    [Parameter(Mandatory=$true)]        
+    [Parameter(Mandatory=$true)]
         [string]$message,
-    [Parameter(Mandatory=$true)]        
-        [string]$plivoID,   
-    [Parameter(Mandatory=$true)]        
-        [string]$AuthKey, 
+    [Parameter(Mandatory=$true)]
+        [string]$plivoID,
+    [Parameter(Mandatory=$true)]
+        [string]$AuthKey
 )
 
 $plivoAUTH = ConvertTo-SecureString -String $AuthKey -AsPlainText -Force
