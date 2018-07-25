@@ -5,9 +5,9 @@ For you blueberries, just [Download](https://github.com/BlueTeamNinja/Tools/arch
 **Script** | What it does... | Requisites
 ---|---|---:
 ||<h2> *AD Tools* |
-**Send-SMSAlert** | Totally not an AD tool, but after a tsunami of emails **AFTER** you've fixed exchange saying "*Exchange is down*" - everything is just embarassing.  | *None*
-**Intentional-Lockout** | Simply and quickly Locks out a specified account.  Used to test Event alerting, WMI query testing, and SIEM trigger. | *None*
-
+  **Intentional-Lockout** |  Locks out a specified account.  Used to test Event alerting, WMI query testing, and SIEM trigger. | *None*
 ||<h2> General Tools|
-**Mass E-Mailer** | *Coming soon*, internal tool for emailing Powershell outputs in bulk, grouped by an item (Usually a person, group by Supervisors etc).  | *NA*
-**Open Ports** | _Netstat is boring_.  Lucky for you, I'm not.  I just added a bit of tweak for some decent info for listening ports (Naming *svchost* sub-processes). | *None*
+**SMS Alert** | Because a tsunami of emails **AFTER** you've fixed exchange saying "*Exchange is down*" is just embarassing.  | *None*
+**Mass E-Mailer** | *Coming soon - still scrubbing*, internal tool for emailing PoSH objects in bulk, grouped by an item (Usually a person, group by Supervisors etc).  | *NA*
+**Open Ports** | _Netstat is boring_.  Lucky for you, I'm not.  I just added a bit of tweak for some decent info for listening ports. | *None*
+**Firefox Details** | I needed it once, I'm sharing it now.  Hunts versions of 32 or 64-bit for SCCM detection or whatever. | *None*
