@@ -6,6 +6,7 @@ For you blueberries, just [Download](https://github.com/BlueTeamNinja/Tools/arch
 ---|---|---:
 ||<h2> *AD Tools* |
   **Intentional-Lockout** |  Locks out a specified account.  Used to test Event alerting, WMI query testing, and SIEM trigger. | *None*
+ **Get-QuickPCInfo** |  Toss in hostnames and glob together logged in User, with some AD details. | *None*
 ||<h2> General Tools|
 **SMS Alert** | Because a tsunami of emails **AFTER** you've fixed exchange saying "*Exchange is down*" is just embarassing.  | *None*
 **Mass E-Mailer** | *Coming soon - still scrubbing*, internal tool for emailing PoSH objects in bulk, grouped by an item (Usually a person, group by Supervisors etc).  | *NA*
