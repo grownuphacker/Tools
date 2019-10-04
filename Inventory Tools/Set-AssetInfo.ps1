@@ -2,7 +2,7 @@ $Wshare = "\\FileServer\hardware\Workstations"
 $Mshare = "\\FileServer\hardware\Monitors"
 $TagFile = "\\FileServer\MonitorTags.csv"
 
-$SnipeURL = "https://inventory.oshawa.ca"
+$SnipeURL = "https://inventory.domain.com"
 
 try{
     $SnipeAPI = Get-content "$PSScriptRoot\key.txt"
