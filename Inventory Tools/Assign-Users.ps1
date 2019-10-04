@@ -35,9 +35,9 @@ function Get-SCCMPCInfo {
             ,A.[UserName00] AS PrimaryUser
             ,B.[SerialNumber00] AS Serial
             ,C.[DefaultIPGateway00] AS Network
-            FROM [CM_OSH].[dbo].[Computer_System_DATA] A, 
-                [CM_OSH].[dbo].[PC_BIOS_DATA] B, 
-                [CM_OSH].[dbo].[Network_DATA] C
+            FROM [CM_$SITENAME].[dbo].[Computer_System_DATA] A, 
+                [CM_$SITENAME].[dbo].[PC_BIOS_DATA] B, 
+                [CM_$SITENAME].[dbo].[Network_DATA] C
             WHERE A.[MachineID] = B.[MachineID] 
                 AND A.[MachineID] = C.[MachineID] 
                 AND C.[DefaultIPGateway00] IS NOT NULL;
