@@ -62,4 +62,14 @@ Attached To : PC-HOSTNAME
 Using these CSVs - I used https://github.com/snazy2000/SnipeitPS @Snazzy2000 's Powershell API wrapper (One day I'll probably fork it out, but its pretty awesome as is!)
 then I dump in all the information - with most of the extra information in notes.  So you can easily find the last time a PC was inventoried. 
 
-Set it up as a scheduled task at login - and also add it as a Script in SCCM and you're good to go.
+## Wishlist
+
+* Send to a database instead of CSV
+* Pull Location names from a DHCP scope server to handle changes better
+* Create a report from the logs
+* Send abnormal data to SIEM / Log solution (Graylog... I mean to send to Graylog)
+* Integrate a NAC with the Inventory solution and find a quarantine/onboarding process
+
+Set `get-assetinfo.ps1` it up as a scheduled task at login - and also add it as a Script in SCCM and you're good to go.
+Run `Set-Assetinfo.ps1` At whatever interval you want to true up your inventory
+Run `Assign-Users.ps1` right after running the above.
