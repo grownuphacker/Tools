@@ -1,12 +1,19 @@
 # SCCM / Snipe IT Inventory Automation
 
 ### Dependencies
+
 > `Install-Module SnipeITPS`
+
 > Snipe API Key with permissions to view and create...pretty much everything. 
+
 > Every MODEL NUMBER needs to be in Snipe IT (*WILL* Fail without)
+
 > Every Location needs to be in Snipe IT (Won't Fail without)
+
 > Those locations need their DHCP address scopes in the proper Function in Set-AssetInfo
+
 > User Affinity enabled in SCCM.  
+
 
 ## What does it do?
 
