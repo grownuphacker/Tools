@@ -2,6 +2,8 @@
 A few things I've slapped together over time.  I hope you find them useful.
 For you blueberries, just [Download](https://github.com/BlueTeamNinja/Tools/archive/master.zip "The path to greatness")  from here.  
 
+This list is getting outdated - There are more than this and I haven't written about them all yet.  
+
 **Script** | What it does... | Requisites
 ---|---|---:
 ||<h2> *AD Tools* |
