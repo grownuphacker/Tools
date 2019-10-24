@@ -1,8 +1,9 @@
+
 # Tools
 A few things I've slapped together over time.  I hope you find them useful.
 For you blueberries, just [Download](https://github.com/BlueTeamNinja/Tools/archive/master.zip "The path to greatness")  from here.  
 
-This list is getting outdated - There are more than this and I haven't written about them all yet.  
+Do not fold or bend.
 
 **Script** | What it does... | Requisites
 ---|---|---:
@@ -15,9 +16,11 @@ This list is getting outdated - There are more than this and I haven't written a
 **Open Ports** | _Netstat is boring_.  Lucky for you, I'm not.  I just added a bit of tweak for some decent info for listening ports. | *None*
 **Firefox Details** | I needed it once, I'm sharing it now.  Hunts versions of 32 or 64-bit for SCCM detection or whatever. | *None*
 **Enable Copy/Paste** | Enable 'isolation.tools.copy.disable' eq FALSE on VMS by Wildcard. | **PowerCLI**
-||<h2> Ninja Bucket (In Progress)|
+||<h2> Ninja Bucket|
 **View Agent Logs** | Parsing out connection times regardless of protocol (PCoIP, RDP, etc). It's a snitch report.  | *Horizon View Agent 4.X+*
 **Nuketown** | Pass an app string, easily signed, and nuke all instances on a remote PC (I.e. Java, Oracle, TightVNC).  Easy pave for SCCM. | *A pulse*
 **Email Rescue Ops** | Exchange likes to topple over, and people get all uppity.  This is a somewhat frequence cause, and an auto-doc to fix it.  | *On Prem Exchange*
-
-
+||<h2> API Tools|
+**User Find** | Starts a listener for *really fast* API lookups  | *Requires [Polaris](https://www.powershellgallery.com/packages/Polaris/0.2.0) *
+||<h2> Installers|
+**SYSMON** | A PSADT script to deploy Sysmon dealing with the most common bugs   | *Requires **NOTHING** *
