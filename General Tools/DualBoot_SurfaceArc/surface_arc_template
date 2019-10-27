@@ -1,0 +1,26 @@
+[General]
+Name=Arc Touch BT Mouse
+Appearance=0x03c2
+AddressType=static
+SupportedTechnologies=LE;
+Trusted=true
+Blocked=false
+Services=00001800-0000-1000-8000-00805f9b34fb;00001801-0000-1000-8000-00805f9b34fb;0000180a-0000-1000-8000-00805f9b34fb;0000180f-0000-1000-8000-00805f9b34fb;00001812-0000-1000-8000-00805f9b34fb;
+
+[LocalSignatureKey]
+Key=
+Counter=0
+Authenticated=false
+
+[LongTermKey]
+Key=
+Authenticated=0
+EncSize=16
+EDiv=
+Rand=
+
+[DeviceID]
+Source=2
+Vendor=1118
+Product=2052
+Version=1
