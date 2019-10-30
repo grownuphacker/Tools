@@ -27,7 +27,7 @@ $lineout = @();
             $recordType = "IP6"
             $recordData = $record.RecordData.IPV6Address.IpAddressToString
         }else{
-            $recordType = "Data"
+            $recordType = "CNAME"
             $recordData = $record.RecordData.HostNameAlias
         }
         
