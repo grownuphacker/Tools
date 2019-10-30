@@ -2,7 +2,7 @@
 BACKUP_LOG="/backup/backup.log"
 BACKUP_DIR="/media/backup"
 echo `date` >> $BACKUP_LOG
-APP_NAME="vslogs"
+APP_NAME=$(hostname)
 TIMESTAMP=`date +%F-%H%M`
 BACKUP_NAME="$BACKUP_DIR/$APP_NAME-$TIMESTAMP"
 mkdir -p $BACKUP_NAME
