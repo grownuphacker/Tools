@@ -4,6 +4,9 @@ This is a pretty straightforward tool that is design to be set on a schedule (Ho
 
 Just run it each time and it'll poll your latest list of mailbox names and display a small banner indicating that it is not likely friendly. 
 
+Default appearance
+![Banner Image](https://raw.githubusercontent.com/BlueTeamNinja/Tools/master/_assets/email_banner.png)
+
 Comments welcome. 
 
 ### Read the code before running
