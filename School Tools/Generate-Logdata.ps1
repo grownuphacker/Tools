@@ -7,13 +7,73 @@ Param(
     [Parameter()]
         [string]$NodeFile = "nodes.csv", 
     [Parameter()]
-        [int]$daysOfData = 20,
+        [int]$daysOfData = 30,
     [Parameter()]
         [int]$infectionPeriod = 5
 )
 
 $Nodes = Import-Csv "$($PSSCriptRoot)\$($NodeFile)"
 $nodeCount = $nodes.Count
+
+
+function Get-Infected{
+    param ($testNode)
+    Write-Verbose "Checking infection against $testNode"
+    if($testNode -in $global:infectedList.Source){
+        return $true
+    }else {
+        return $false
+    }
+
+}
+
+Function Set-Infected{
+    Param(
+        [Parameter()]
+            $sourceNode,
+        [Parameter()]
+            [int]$infectionPeriod
+    ) 
+    
+    Write-Verbose "Infecting $SourceNode for $"
+    $global:infectedList += [PSCustomObject]@{
+        Source = $sourceNode 
+        DaysRemaining = $infectionPeriod
+    }
+    
+}
+Function Invoke-NoninteractiveInfections{
+    Param(
+        [Parameter()]
+            $dailyList,
+        [Parameter()]
+            [int]$today
+    ) 
+        $r = $global:infectedList.source | ForEach-Object {if($_ -notin $dailyList){Write-Output "$($_) 1"}}
+        return $r
+        
+}
+Function Invoke-DailyReduction{ 
+    # Holy Gadzooks - Scriptblocks as variables for the win
+    # Seriously, the line below this comment is pure voodoo.  I love it. 
+    $ReducebyOne = {$_.DaysRemaining--}
+    $newInfectedList = @()
+    # Boom - I just script
+    $global:infectedList | ForEach-Object $ReducebyOne
+    foreach ($infected in $global:infectedList){
+        Write-Verbose "Checking $infected"
+        if ($infected.DaysRemaining -gt 0){
+        $newInfectedList += $infected
+        Write-Verbose "Assignined $infected to $newInfectedList"
+        }
+
+    }
+    $global:infectedList = $newInfectedList
+    Write-Verbose "Infection List: $global:infectedList"
+    
+    
+}   
+
 
 Write-Verbose "Randomly assigning 10% of the population with Infection of varying remaining times"
 $global:infectedList = @()
@@ -26,50 +86,11 @@ $global:infectedList += foreach($sample in $sampleInfections){
     }
 }
 
-Write-Output $global:infectedList
-
-function Get-Infected{
-    param ($sourceNode)
-    Write-Debug "Checking infection against $SourceNode"
-    if($sourceNode -in $global:infectedList.Source){
-        return true
-    }else {
-        return false
-    }
-
-}
-
-Function Set-Infected{
-    param ($sourceNode)
-    param ($infectionPeriod)
-    
-    Write-Verbose "Infecting $SourceNode for $"
-    $global:infectedList += [PSCustomObject]@{
-        Source = $sourceNode 
-        DaysRemaining = $infectionPeriod
-    }
-    
-}
-
-Function Invoke-DailyReduction{ 
-    # Holy Gadzooks - Scriptblocks as variables for the win
-    # Seriously, the line below this comment is pure voodoo.  I love it. 
-    $ReducebyOne = {$_.DaysRemaining--}
-
-    # Boom - I just script
-    $global:infectedList | ForEach-Object $ReducebyOne
-    foreach ($infected in $global:infectedList){
-        if ($infected.DaysRemaining -gt 0){
-        $newInfectedList += $infected
-        }
-    }
-    $global:infectedList = $newInfectedList
-    Write-Verbose $global:infectedList
-    
-}   
 
 $dayResult = @()
 $result = foreach($day in 1..$daysOfData){
+    Write-Host $global:infectedList
+
     Write-Verbose "Simulating day $day`n"
     $interactions = Get-Random -Maximum $MaxInteractions
     $dayResult = foreach($interaction in 0..$interactions){
@@ -88,14 +109,26 @@ $result = foreach($day in 1..$daysOfData){
             }else{ 
                 $lineInfectedstate = 0
             }
-        Write-Output "$($line[0]) $lineinfectedstate $($line[1..$line.count])`n"
+
+        Write-Output "$($line[0]) $lineinfectedstate $($line[1..$line.count])"
+
 }
 Invoke-DailyReduction
+
+if($global:infectedList.count -ne 0){
+$dayresult += Invoke-NoninteractiveInfections -dailyList $dayresult -today $day
+}
+
 $dayresultcsv = $dayresult -replace(' ',',')
 
+
 $dayresultcsv
-Write-Verbose $dayresultcsv
-#$dayresultcsv | out-file -FilePath "$($PSSCriptRoot)\day_$($day).csv"
+Write-Verbose -Message "$dayresultcsv"
+$dayresultcsv | out-file -FilePath "$($PSSCriptRoot)\day_$($day).csv"
+
+Write-Verbose "Day $day Infections`n`n=============`n"
+$global:infectedList | Format-Table | Out-String | Write-Verbose
 
 }
-Write-Output "$result"
+
+#Write-Output $result
