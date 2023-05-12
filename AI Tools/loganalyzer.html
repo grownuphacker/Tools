@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Abes Ultra Smart Log Analyzer</title>
+        <h3> Powered by a <strong>shitload</strong> of AI!</h3>
+        <style>
+            body {
+                background-color: black;
+                color: greenyellow;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            h1 {
+                color: neon;
+            }
+
+            input, button {
+                background-color: black;
+                color: white;
+                border: 2px solid greenyellow;
+                border-radius: 5px;
+            }
+
+            #output {
+                background-color: black;
+                color: neon;
+                border: 2px solid neon;
+                border-radius: 15px;
+                padding: 10px;
+                white-space: pre-wrap;
+            }
+
+            button {
+                cursor: pointer;
+            }
+
+            
+        </style>
+               <script>
+                async function chatWithGpt() {
+                    // Get user input
+                    const userInput = document.getElementById('userInput').value;
+                    const usageContext = document.getElementById('usageContext').value;
+    
+                    // Prepare the prompt
+                    const prompt_role = `You are a very talened analyst working in the field of ${usageContext}.`
+                    const prompt_content = `  Please analyze the following text
+                     "${userInput}" and provide the following information: 
+                    1. What are the most important fields of data for short-term collection and analysis to prevent security incidents, outages, breaches, and to provide information to incident responders or system administrators.  Please provide each field with a suggested retention period of short, medium or long to maximize incident response capability while respecting the costs of SIEM and disk space.
+                    2. Please provide either an example GROK pattern to extract those fields and attempt to follow the schema highlighted at schema.graylog.org
+                    3. Provide a possible example of how to utilize this grok pattern in a Graylog Pipeline Rule that always executes (has no logic under 'when' portion of the rule) and simply runs this expression or pattern, sets the returned fields then ends'`;
+    
+                    // Prepare the API request
+                    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // PUT IT IN YOUR OWN API HERE
+                            'Authorization': 'Bearer aa-somethinglongandweirdandsuperultrasecure',  // Replace with your actual API key
+                        },
+                        body: JSON.stringify({
+                            prompt: prompt,
+                            messages: [
+                            
+                        {"role": "system", "content": prompt_role},
+                        {"role": "user", "content": prompt_content}
+
+                            ],
+                            temperature: 0.7,
+                            // max_tokens: 100,
+                            model:"gpt-3.5-turbo",
+
+                        }),
+                    });
+    
+                    // Handle the API response
+                    if (response.ok) {
+                        const data = await response.json();
+                        document.getElementById('output').textContent = data.choices[0].message.content;
+                    } else {
+                        console.error('API request failed', response);
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <h1>Abes AutoMagiculator</h1>
+            <div>
+                <label for="userInput">Sample Log:</label>
+                <input id="userInput" type="text" style="width:800px; height:55px; font-size:30px;" />
+                
+
+            </div>
+            <div>
+                <label for="usageContext">Usage Context:</label>
+                <select id="usageContext">
+                    <option value="Security">Security</option>
+                    <option value="Operations" selected>Operations</option>
+                    <option value="Data Lake">Data Lake</option>
+                </select>
+            </div>
+            <br><br>
+            <button onclick="chatWithGpt()">GRAYLOG MAGIC ME, YOU WIZARD</button>
+            <br><br><br>
+            <div>
+                <label for="output">Output:</label>
+                <pre id="output"></pre>
+            </div>
+        </body>
+    </html>
