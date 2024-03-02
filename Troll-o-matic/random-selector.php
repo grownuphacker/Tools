@@ -2,7 +2,7 @@
 // Define the function to randomly display and redirect based on CSV data
 function random_redirect($omit_nsfw = false) {
     // Fetch CSV data from GitHub
-    $csv_url = 'https://raw.githubusercontent.com/yourusername/yourrepository/yourcsvfile.csv'; // Update with your CSV URL
+    $csv_url = 'https://raw.githubusercontent.com/BlueTeamNinja/Tools/master/Troll-o-matic/trollurl.csv'; // Update with your CSV URL
     $csv_data = file_get_contents($csv_url);
 
     // Parse CSV data
