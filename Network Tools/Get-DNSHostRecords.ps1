@@ -1,4 +1,4 @@
-# By Abe - https://blueteam.ninja
+# By Abe - https://grownuphacker.com
 
 
 # Get your current DNS to find the server
